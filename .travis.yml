@@ -10,14 +10,14 @@ script:
     - docker run -e CI=true jakserafin/react-test npm test
 
 after_success:
-    - docker build -t jakserafin/multi-client ./client
-    - docker build -t jakserafin/multi-nginx ./nginx
-    - docker build -t jakserafin/multi-server ./server
-    - docker build -t jakserafin/multi-worker ./worker
+    - docker build -t lbrf/multi-client ./client
+    - docker build -t lbrf/multi-nginx ./nginx
+    - docker build -t lbrf/multi-server ./server
+    - docker build -t lbrf/multi-worker ./worker
 # log in the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # push to the docker 
-    - docker push jakserafin/multi-client
-    - docker push jakserafin/multi-nginx
-    - docker push jakserafin/multi-server
-    - docker push jakserafin/multi-worker 
+    - docker push lbrf/multi-client
+    - docker push lbrf/multi-nginx
+    - docker push lbrf/multi-server
+    - docker push lbrf/multi-worker 
