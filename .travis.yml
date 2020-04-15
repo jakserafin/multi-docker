@@ -8,14 +8,14 @@ before_install:
 
 script:
     - docker run -e CI=true jakserafin/react-test npm test
-    after_success:
+after_success:
     - docker build -t jakserafin/multi-client ./client
     - docker build -t jakserafin/multi-nginx ./nginx
     - docker build -t jakserafin/multi-server ./server
     - docker build -t jakserafin/multi-worker ./worker
 # log in the docker CLI
     - echo "$Ksiazka3!" | docker login -u "$lbrf" --password-stdin
-    
+# push to the docker 
     - docker push jakserafin/multi-client
     - docker push jakserafin/multi-nginx
     - docker push jakserafin/multi-server
