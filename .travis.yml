@@ -4,10 +4,10 @@ services:
     - docker
 
 before_install:
-    - docker build -t jakserafin/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t lbrf/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true jakserafin/react-test npm test
+    - docker run -e CI=true lbrf/react-test npm test
 
 after_success:
     - docker build -t lbrf/multi-client ./client
